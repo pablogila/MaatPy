@@ -1,14 +1,14 @@
 '''
 This script is used to update Maat documentation automatically.
 Requires pdoc, install it with `pip install pdoc`.
-It also requires Thoth, get it here: https://github.com/pablogila/ThothPy
+It also requires Aton, get it here: https://github.com/pablogila/Aton
 Run this script as `python3 makedocs.py`.
 '''
 
 try:
-    import thotpy as th
+    import aton
 except:
-    print("Aborting... You need ThotPy to compile the documentation! https://github.com/pablogila/ThotPy")
+    print("Aborting... You need Aton to compile the documentation! https://github.com/pablogila/Aton")
 
 readme = './README.md'
 temp_readme = './_README_temp.md'
@@ -27,15 +27,15 @@ fix_dict ={
     '[sample](https://pablogila.github.io/MaatPy/maatpy/sample.html)'           : '`maatpy.sample`',
 }
 
-version = th.find.lines(r"version\s*=", version_path, -1, 0, False, True)[0]
-version = th.extract.string(version, 'version', None, True)
+version = aton.text.find.lines(version_path, r"version\s*=", -1, 0, False, True)[0]
+version = aton.text.extract.string(version, 'version', None, True)
 
 print(f'Updating README to {version}...')
-th.text.replace_line(f'# MaatPy {version}', '# MaatPy v', readme, 1)
+aton.text.edit.replace_line(readme, '# MaatPy v', f'# MaatPy {version}', 1)
 
 print('Updating docs with Pdoc...')
-th.file.from_template(readme, temp_readme, None, fix_dict)
-th.call.bash(f"pdoc ./maatpy/ -o ./docs --mermaid --math --footer-text='MaatPy {version} documentation'")
-th.file.remove(temp_readme)
+aton.text.edit.from_template(readme, temp_readme, fix_dict)
+aton.call.bash(f"pdoc ./maatpy/ -o ./docs --mermaid --math --footer-text='MaatPy {version} documentation'")
+aton.file.remove(temp_readme)
 print('Done!')
 

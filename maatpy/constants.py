@@ -27,7 +27,7 @@ recommended 2022 values of the Fundamental Physical Constants.
 import numpy as np
 
 
-version = 'v3.1.0'
+version = 'v3.1.1'
 
 '''---
 ## Energy conversion factors

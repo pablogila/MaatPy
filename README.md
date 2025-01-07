@@ -1,4 +1,10 @@
-# MaatPy v3.1.0
+# MaatPy v3.1.1
+
+## IMPORTANT NOTICE
+
+MaatPy has been imported to [Aton](https://github.com/pablogila/Aton/). All the development will continue in the Aton repo. This MaatPy repo is only left for retrocompatibility and will not be updated.
+
+# MaatPy (Legacy)
 
 Welcome to the spectru**M** **A**n**A**lysis **T**ools for **Py**thon; or just **MaatPy**, as the modern incarnation of the Egyptian goddess of truth, order, and justice, [Maat](https://en.wikipedia.org/wiki/Maat).  
 
